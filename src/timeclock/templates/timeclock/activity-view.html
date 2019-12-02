@@ -1,0 +1,15 @@
+ 
+{% if object %}
+		<h1>{{ object.user.username | capfirst }} Activity</h1>
+	<h1> Currently:{{object.current}}</h1>
+	<p>Updated:{{object.timestamp}}</p>
+{% endif %}
+<form method = 'POST' action = ''>
+	{% csrf_token %}
+	{{form.as_p}}
+ 	<input  type='submit' value='{% if object %}{{object.next_activity }}{% else %}Check in{% endif %}' />	
+
+</form>
+
+<br/>
+<p>Not {{ object.user.username }}? <a href='/logout'>Logout</a></p>
